@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using SchoolManagementApp.MVC.Data;
 
 namespace SchoolManagementApp.MVC.Controllers
 {
+    [Authorize]
     public class LecturersController : Controller
     {
         private readonly SchoolManagementDbContext _context;
@@ -21,9 +23,9 @@ namespace SchoolManagementApp.MVC.Controllers
         // GET: Lecturers
         public async Task<IActionResult> Index()
         {
-              return _context.Lecturers != null ? 
-                          View(await _context.Lecturers.ToListAsync()) :
-                          Problem("Entity set 'SchoolManagementDbContext.Lecturers'  is null.");
+            return _context.Lecturers != null ?
+                        View(await _context.Lecturers.ToListAsync()) :
+                        Problem("Entity set 'SchoolManagementDbContext.Lecturers'  is null.");
         }
 
         // GET: Lecturers/Details/5
@@ -149,14 +151,14 @@ namespace SchoolManagementApp.MVC.Controllers
             {
                 _context.Lecturers.Remove(lecturer);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool LecturerExists(int id)
         {
-          return (_context.Lecturers?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Lecturers?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
