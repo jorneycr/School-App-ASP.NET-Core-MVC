@@ -33,7 +33,7 @@
 
 ##  Generate scaffolded database with entity Framework its Context DB, and also generate the file Data
 
-# ` dotnet ef dbcontext scaffold "Server=localhost, 1433;Database=SchoolManagementDb;Trusted_Connection=false;MultipleActiveResultSets=true;Encrypt=false;user id=sa;password=Blizzard2604*" Microsoft.EntityFrameworkCore.SqlServer -o Data -f --no-onconfiguring`
+# ` dotnet ef dbcontext scaffold "Server=localhost, 1433;Database=SchoolManagementDb;Trusted_Connection=false;MultipleActiveResultSets=true;Encrypt=false;user id=sa;password=Password1234*" Microsoft.EntityFrameworkCore.SqlServer -o Data -f --no-onconfiguring`
 
 ## Generate controllers
 # `dotnet aspnet-codegenerator controller -name CoursesController -m Course -dc SchoolManagementDbContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries -f`
